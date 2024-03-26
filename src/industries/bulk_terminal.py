@@ -345,6 +345,56 @@ industry.add_magic_spritelayout(
     },
 )
 
+industry.add_industry_outpost_layout(
+    id="bulk_terminal_industry_outpost_layout_1",
+    layout=[
+        (0, 0, "bulk_terminal_spritelayout_coast_warehouse"),
+        (0, 1, "bulk_terminal_spritelayout_jetty_empty"),
+        (0, 2, "bulk_terminal_spritelayout_crane_rails_nw_se"),
+        (0, 3, "bulk_terminal_spritelayout_crane_nw_se"),
+        (0, 4, "bulk_terminal_spritelayout_crane_rails_nw_se"),
+        (0, 5, "spritelayout_null_water"),
+        (1, 0, "bulk_terminal_spritelayout_coast_warehouse"),
+        (1, 1, "bulk_terminal_spritelayout_crane_nw_se"),
+        (1, 2, "bulk_terminal_spritelayout_water_barge_nw_se"),
+        (1, 3, "bulk_terminal_spritelayout_water_empty"),
+        (1, 4, "bulk_terminal_spritelayout_water_barge_nw_se"),
+    ],
+)
+industry.add_industry_outpost_layout(
+    id="bulk_terminal_industry_outpost_layout_2",
+    layout=[
+        (0, 1, "bulk_terminal_spritelayout_coast_warehouse"),
+        (0, 2, "bulk_terminal_spritelayout_jetty_empty"),
+        (0, 3, "bulk_terminal_spritelayout_crane_rails_nw_se"),
+        (0, 4, "bulk_terminal_spritelayout_crane_nw_se"),
+        (0, 5, "bulk_terminal_spritelayout_crane_rails_nw_se"),
+        (0, 6, "spritelayout_null_water"),
+        (1, 1, "bulk_terminal_spritelayout_coast_warehouse"),
+        (1, 2, "bulk_terminal_spritelayout_crane_nw_se"),
+        (1, 3, "bulk_terminal_spritelayout_water_barge_nw_se"),
+        (1, 4, "bulk_terminal_spritelayout_water_empty"),
+        (1, 5, "bulk_terminal_spritelayout_water_barge_nw_se"),
+    ],
+)
+industry.add_industry_outpost_layout(
+    id="bulk_terminal_industry_outpost_layout_1",
+    layout=[
+        (1, 0, "bulk_terminal_spritelayout_coast_warehouse"),
+        (1, 1, "bulk_terminal_spritelayout_jetty_empty"),
+        (1, 2, "bulk_terminal_spritelayout_crane_rails_nw_se"),
+        (1, 3, "bulk_terminal_spritelayout_crane_nw_se"),
+        (1, 4, "bulk_terminal_spritelayout_crane_rails_nw_se"),
+        (1, 5, "spritelayout_null_water"),
+        (2, 0, "bulk_terminal_spritelayout_coast_warehouse"),
+        (2, 1, "bulk_terminal_spritelayout_crane_nw_se"),
+        (2, 2, "bulk_terminal_spritelayout_water_barge_nw_se"),
+        (2, 3, "bulk_terminal_spritelayout_water_empty"),
+        (2, 4, "bulk_terminal_spritelayout_water_barge_nw_se"),
+    ],
+)
+
+"""
 industry.add_industry_layout(
     id="bulk_terminal_industry_layout_1",
     layout=[
@@ -383,6 +433,7 @@ industry.add_industry_layout(
         (4, 4, "spritelayout_null_water"),
     ],
 )
+
 industry.add_industry_layout(
     id="bulk_terminal_industry_layout_2",
     layout=[
@@ -421,6 +472,7 @@ industry.add_industry_layout(
         (5, 3, "bulk_terminal_spritelayout_coast_warehouse"),
     ],
 )
+"""
 industry.add_industry_layout(
     id="bulk_terminal_industry_layout_3",
     layout=[
@@ -478,22 +530,22 @@ industry.add_industry_layout(
         ),
         (1, 4, "bulk_terminal_spritelayout_water_empty"),
         (1, 5, "spritelayout_null_water"),
-        (2, 0, "bulk_terminal_spritelayout_coast_warehouse"),
-        (2, 1, "bulk_terminal_spritelayout_jetty_empty"),
-        (2, 2, "bulk_terminal_spritelayout_crane_rails_nw_se"),
-        (2, 3, "bulk_terminal_spritelayout_crane_nw_se"),
-        (2, 4, "bulk_terminal_spritelayout_crane_rails_nw_se"),
-        (2, 5, "spritelayout_null_water"),
-        (3, 0, "bulk_terminal_spritelayout_coast_warehouse"),
-        (3, 1, "bulk_terminal_spritelayout_crane_nw_se"),
-        (3, 2, "bulk_terminal_spritelayout_water_barge_nw_se"),
-        (3, 3, "bulk_terminal_spritelayout_water_empty"),
-        (3, 4, "bulk_terminal_spritelayout_water_barge_nw_se"),
-        (3, 5, "spritelayout_null_water"),
-        (4, 1, "spritelayout_null_water"),
-        (4, 2, "spritelayout_null_water"),
-        (4, 3, "spritelayout_null_water"),
-        (4, 4, "spritelayout_null_water"),
-        (4, 5, "spritelayout_null_water"),
+        #(2, 0, "bulk_terminal_spritelayout_coast_warehouse"),
+        #(2, 1, "bulk_terminal_spritelayout_jetty_empty"),
+        #(2, 2, "bulk_terminal_spritelayout_crane_rails_nw_se"),
+        #(2, 3, "bulk_terminal_spritelayout_crane_nw_se"),
+        #(2, 4, "bulk_terminal_spritelayout_crane_rails_nw_se"),
+        #(2, 5, "spritelayout_null_water"),
+        #(3, 0, "bulk_terminal_spritelayout_coast_warehouse"),
+        #(3, 1, "bulk_terminal_spritelayout_crane_nw_se"),
+        #(3, 2, "bulk_terminal_spritelayout_water_barge_nw_se"),
+        #(3, 3, "bulk_terminal_spritelayout_water_empty"),
+        #(3, 4, "bulk_terminal_spritelayout_water_barge_nw_se"),
+        #(3, 5, "spritelayout_null_water"),
+        #(4, 1, "spritelayout_null_water"),
+        #(4, 2, "spritelayout_null_water"),
+        #(4, 3, "spritelayout_null_water"),
+        #(4, 4, "spritelayout_null_water"),
+        #(4, 5, "spritelayout_null_water"),
     ],
 )
