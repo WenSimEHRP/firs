@@ -1749,8 +1749,28 @@ class Industry(object):
     def industry_layouts_jetties(self):
         # non-standard case, used for port-type industries and harbours
         result = []
-        for layout in self._industry_layouts["jetties"]:
-            result.append(layout)
+        composite_layout_counter = 0
+        layout_1 = self._industry_layouts["jetties"][0]
+        layout_2 = self._industry_layouts["jetties"][1]
+
+        for xy_offset in [(layout_1.xy_dimensions[0] + 2, 0), (layout_1.xy_dimensions[0] + 2, 1), (layout_1.xy_dimensions[0] + 2, -1)]:
+            composite_layout_counter += 1
+            new_id = (
+                layout_1.id
+                + "_"
+                + layout_2.id
+                + "_composite_layout_num_"
+                + str(composite_layout_counter)
+            )
+            result.append(
+                IndustryLayout(
+                    industry=self,
+                    id=new_id,
+                    layout=self.composite_two_industry_layouts(
+                        layout_1, layout_2, xy_offset
+                    ),
+                )
+            )
         return result
 
     def composite_two_industry_layouts(self, layout_1, layout_2, xy_offset):
