@@ -1650,7 +1650,12 @@ class Industry(object):
         if len(self._industry_layouts["jetties"]) > 0:
             # precisely 2 jetty layouts must be provided
             if len(self._industry_layouts["jetties"]) != 2:
-                raise BaseException("For industry using jetty layouts, precisely 2 layouts must be provided; industry " + self.id + " provides " + str(len(self._industry_layouts["jetties"])))
+                raise BaseException(
+                    "For industry using jetty layouts, precisely 2 layouts must be provided; industry "
+                    + self.id
+                    + " provides "
+                    + str(len(self._industry_layouts["jetties"]))
+                )
             return self.industry_layouts_jetties
         else:
             return self.industry_layouts_default
@@ -1720,7 +1725,6 @@ class Industry(object):
                             outpost_xy_offsets
                         ):
                             composite_layout_counter += 1
-                            combined_layout = core_layout.layout.copy()
                             new_id = (
                                 core_layout.id
                                 + "_"
@@ -1730,22 +1734,13 @@ class Industry(object):
                                 + "_composite_layout_num_"
                                 + str(composite_layout_counter)
                             )
-                            for tile_def in outpost_layout.layout:
-                                new_tile_def = (
-                                    xy_offset[0] + tile_def[0],
-                                    xy_offset[1] + tile_def[1],
-                                    tile_def[2],
-                                    tile_def[3],
-                                )
-                                combined_layout.append(new_tile_def)
-                            transposed_layout = (
-                                self.transpose_industry_layout_to_set_n_tile_as_origin(
-                                    combined_layout
-                                )
-                            )
                             result.append(
                                 IndustryLayout(
-                                    industry=self, id=new_id, layout=transposed_layout
+                                    industry=self,
+                                    id=new_id,
+                                    layout=self.composite_two_industry_layouts(
+                                        core_layout, outpost_layout, xy_offset
+                                    ),
                                 )
                             )
         return result
@@ -1757,6 +1752,26 @@ class Industry(object):
         for layout in self._industry_layouts["jetties"]:
             result.append(layout)
         return result
+
+    def composite_two_industry_layouts(self, layout_1, layout_2, xy_offset):
+        # for simplicity, this assumes we only ever want to composite 2 layouts
+        # more than 2 layouts could be supported easily enough, but there was no case so far
+
+        # copy to avoid modifying the original layout in place
+        composite_layout = layout_1.layout.copy()
+        for tile_def in layout_2.layout:
+            new_tile_def = (
+                xy_offset[0] + tile_def[0],
+                xy_offset[1] + tile_def[1],
+                tile_def[2],
+                tile_def[3],
+            )
+            composite_layout.append(new_tile_def)
+
+        composite_layout = self.transpose_industry_layout_to_set_n_tile_as_origin(
+            composite_layout
+        )
+        return composite_layout
 
     def transpose_industry_layout_to_set_n_tile_as_origin(self, layout):
         transposed_layout = []
