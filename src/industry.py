@@ -1101,6 +1101,38 @@ class IndustryLayout(object):
         return result
 
     @property
+    def layout_rotated_90(self):
+        # Rotate 90 degrees clockwise
+        rotated_layout = [
+            (tile_def[1], self.max_x - tile_def[0], tile_def[2], tile_def[3])
+            for tile_def in self.layout
+        ]
+        return rotated_layout
+
+    @property
+    def layout_rotated_180(self):
+        # Rotate 180 degrees
+        rotated_layout = [
+            (
+                self.max_x - tile_def[0],
+                self.max_y - tile_def[1],
+                tile_def[2],
+                tile_def[3],
+            )
+            for tile_def in self.layout
+        ]
+        return rotated_layout
+
+    @property
+    def layout_rotated_270(self):
+        # Rotate 270 degrees clockwise
+        rotated_layout = [
+            (self.max_y - tile_def[1], tile_def[0], tile_def[2], tile_def[3])
+            for tile_def in self.layout
+        ]
+        return rotated_layout
+
+    @property
     def min_x(self):
         return min([i[0] for i in self.layout])
 
@@ -1739,7 +1771,9 @@ class Industry(object):
                                     industry=self,
                                     id=new_id,
                                     layout=self.composite_two_industry_layouts(
-                                        core_layout, outpost_layout, xy_offset
+                                        core_layout.layout,
+                                        outpost_layout.layout,
+                                        xy_offset,
                                     ),
                                 )
                             )
@@ -1750,36 +1784,90 @@ class Industry(object):
         # non-standard case, used for port-type industries and harbours
         result = []
         composite_layout_counter = 0
-        layout_1 = self._industry_layouts["jetties"][0]
-        layout_2 = self._industry_layouts["jetties"][1]
-
-        for xy_offset in [(layout_1.xy_dimensions[0] + 2, 0), (layout_1.xy_dimensions[0] + 2, 1), (layout_1.xy_dimensions[0] + 2, -1)]:
-            composite_layout_counter += 1
-            new_id = (
-                layout_1.id
-                + "_"
-                + layout_2.id
-                + "_composite_layout_num_"
-                + str(composite_layout_counter)
+        jetty_layout_1 = self._industry_layouts["jetties"][0]
+        jetty_layout_2 = self._industry_layouts["jetties"][1]
+        coast_configurations = [
+            (
+                "se",
+                [
+                    (jetty_layout_1.xy_dimensions[0] + 2, 0),
+                    (jetty_layout_1.xy_dimensions[0] + 2, 1),
+                    (jetty_layout_1.xy_dimensions[0] + 2, 2),
+                    (jetty_layout_1.xy_dimensions[0] + 2, -1),
+                    (jetty_layout_1.xy_dimensions[0] + 2, -2),
+                ],
+                jetty_layout_1.layout,
+                jetty_layout_2.layout,
+            ),
+            (
+                "ne",
+                [
+                    (jetty_layout_1.xy_dimensions[0] + 2, 0),
+                    (jetty_layout_1.xy_dimensions[0] + 2, 1),
+                    (jetty_layout_1.xy_dimensions[0] + 2, 2),
+                    (jetty_layout_1.xy_dimensions[0] + 2, -1),
+                    (jetty_layout_1.xy_dimensions[0] + 2, -2),
+                ],
+                jetty_layout_1.layout_rotated_180,
+                jetty_layout_2.layout_rotated_180,
+            ),
+            (
+                "sw",
+                [
+                    # note that we have to use the x dimensions to calculate y offset as we are rotating this one 90 degrees
+                    (0, jetty_layout_1.xy_dimensions[0] + 2),
+                    (1, jetty_layout_1.xy_dimensions[0] + 2),
+                    (2, jetty_layout_1.xy_dimensions[0] + 2),
+                    (-1, jetty_layout_1.xy_dimensions[0] + 2),
+                    (-2, jetty_layout_1.xy_dimensions[0] + 2),
+                ],
+                jetty_layout_1.layout_rotated_90,
+                jetty_layout_2.layout_rotated_90,
+            ),
+            (
+                "ne",
+                [
+                    # note that we have to use the x dimensions to calculate y offset as we are rotating this one 270 degrees
+                    (0, jetty_layout_1.xy_dimensions[0] + 2),
+                    (1, jetty_layout_1.xy_dimensions[0] + 2),
+                    (2, jetty_layout_1.xy_dimensions[0] + 2),
+                    (-1, jetty_layout_1.xy_dimensions[0] + 2),
+                    (-2, jetty_layout_1.xy_dimensions[0] + 2),
+                ],
+                jetty_layout_1.layout_rotated_270,
+                jetty_layout_2.layout_rotated_270,
             )
-            result.append(
-                IndustryLayout(
-                    industry=self,
-                    id=new_id,
-                    layout=self.composite_two_industry_layouts(
-                        layout_1, layout_2, xy_offset
-                    ),
+        ]
+        for orientation_label, xy_offsets, layout_1, layout_2 in coast_configurations:
+            for xy_offset in xy_offsets:
+                composite_layout_counter += 1
+                new_id = (
+                    jetty_layout_1.id
+                    + "_"
+                    + jetty_layout_2.id
+                    + "_composite_layout_num_"
+                    + str(composite_layout_counter)
+                    + "_orientation_"
+                    + orientation_label
                 )
-            )
+                result.append(
+                    IndustryLayout(
+                        industry=self,
+                        id=new_id,
+                        layout=self.composite_two_industry_layouts(
+                            layout_1,
+                            layout_2,
+                            xy_offset,
+                        ),
+                    )
+                )
         return result
 
     def composite_two_industry_layouts(self, layout_1, layout_2, xy_offset):
         # for simplicity, this assumes we only ever want to composite 2 layouts
         # more than 2 layouts could be supported easily enough, but there was no case so far
-
-        # copy to avoid modifying the original layout in place
-        composite_layout = layout_1.layout.copy()
-        for tile_def in layout_2.layout:
+        composite_layout = layout_1.copy()
+        for tile_def in layout_2:
             new_tile_def = (
                 xy_offset[0] + tile_def[0],
                 xy_offset[1] + tile_def[1],
