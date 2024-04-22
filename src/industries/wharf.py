@@ -115,8 +115,11 @@ spriteset_silos = industry.add_spriteset(
 spriteset_cone_silo = industry.add_spriteset(
     sprites=[(580, 10, 64, 84, -31, -61)],
 )
-spriteset_warehouse = industry.add_spriteset(
+spriteset_warehouse_nw_se = industry.add_spriteset(
     sprites=[(650, 10, 64, 84, -31, -61)],
+)
+spriteset_warehouse_ne_sw = industry.add_spriteset(
+    sprites=[(720, 10, 64, 84, -31, -61)],
 )
 spriteset_large_crane_ne_sw = industry.add_spriteset(
     sprites=[(440, 110, 64, 84, -31, -43)],
@@ -298,10 +301,10 @@ industry.add_magic_spritelayout(
                 spriteset_large_crane_ne_sw,
             ],
             "sw": [
-                spriteset_large_crane_se_nw,
+                spriteset_large_crane_nw_se,
             ],
             "nw": [
-                spriteset_large_crane_ne_sw,
+                spriteset_large_crane_sw_ne,
             ],
             "ne": [
                 spriteset_large_crane_se_nw,
@@ -343,16 +346,16 @@ industry.add_magic_spritelayout(
         "jetty_top_sprites": [spriteset_concrete],
         "building_sprites": {
             "se": [
-                spriteset_warehouse,
+                spriteset_warehouse_ne_sw,
             ],
             "sw": [
-                spriteset_warehouse,
+                spriteset_warehouse_nw_se,
             ],
             "nw": [
-                spriteset_warehouse,
+                spriteset_warehouse_ne_sw,
             ],
             "ne": [
-                spriteset_warehouse,
+                spriteset_warehouse_nw_se,
             ],
         },
     },
