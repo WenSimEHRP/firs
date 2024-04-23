@@ -446,6 +446,7 @@ industry.add_industry_jetty_layout(
 industry.add_industry_jetty_layout(
     id="wharf_industry_jetty_layout_2",
     layout=[
+        (0, 4, "wharf_spritelayout_tanks_auto_orient"),
         (0, 5, "wharf_spritelayout_tanks_auto_orient"),
         (0, 6, "wharf_spritelayout_tanks_auto_orient"),
         (0, 7, "wharf_spritelayout_crane_rails_orthogonal_auto_orient"),
@@ -461,6 +462,7 @@ industry.add_industry_jetty_layout(
         (1, 7, "wharf_spritelayout_crane_orthogonal_auto_orient"),
         (1, 8, "wharf_spritelayout_water_barge_auto_orient"),
         (1, 9, "spritelayout_null_water"),
+        (2, 4, "wharf_spritelayout_tanks_auto_orient"),
         (2, 5, "wharf_spritelayout_tanks_auto_orient"),
         (2, 6, "wharf_spritelayout_tanks_auto_orient"),
         (2, 7, "wharf_spritelayout_crane_orthogonal_auto_orient"),
