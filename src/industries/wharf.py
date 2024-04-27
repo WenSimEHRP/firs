@@ -21,13 +21,12 @@ industry = IndustryPrimaryPort(
 industry.enable_in_economy(
     "BASIC_ARCTIC",
     accept_cargo_types=[
-        "PAPR",
-        "ZINC",
-        "FERT",
+        "BOOM",
+        "PEAT",
+        "WDPR",
     ],
     prod_cargo_types_with_multipliers=[
-        ("KAOL", 16),
-        ("NH3_", 17),
+        ("POTA", 19),
         ("ENSP", 9),
         ("FMSP", 9),
     ],
