@@ -21,12 +21,13 @@ industry = IndustryPrimaryPort(
 industry.enable_in_economy(
     "BASIC_ARCTIC",
     accept_cargo_types=[
-        "BOOM",
-        "PEAT",
-        "WDPR",
+        "PAPR",
+        "ZINC",
+        "FERT",
     ],
     prod_cargo_types_with_multipliers=[
-        ("POTA", 19),
+        ("KAOL", 16),
+        ("NH3_", 17),
         ("ENSP", 9),
         ("FMSP", 9),
     ],
@@ -115,14 +116,20 @@ spriteset_warehouse_half_nw_se = industry.add_spriteset(
 spriteset_warehouse_half_ne_sw = industry.add_spriteset(
     sprites=[(510, 10, 64, 84, -31, -61)],
 )
-spriteset_warehouse_nw_se = industry.add_spriteset(
+spriteset_warehouse_half_se_nw = industry.add_spriteset(
     sprites=[(580, 10, 64, 84, -31, -61)],
 )
-spriteset_warehouse_ne_sw = industry.add_spriteset(
+spriteset_warehouse_half_sw_ne = industry.add_spriteset(
     sprites=[(650, 10, 64, 84, -31, -61)],
 )
-spriteset_tank_medium = industry.add_spriteset(
+spriteset_warehouse_nw_se = industry.add_spriteset(
     sprites=[(720, 10, 64, 84, -31, -61)],
+)
+spriteset_warehouse_ne_sw = industry.add_spriteset(
+    sprites=[(790, 10, 64, 84, -31, -61)],
+)
+spriteset_tank_medium = industry.add_spriteset(
+    sprites=[(720, 110, 64, 84, -31, -61)],
 )
 spriteset_large_crane_ne_sw = industry.add_spriteset(
     sprites=[(440, 110, 64, 84, -31, -43)],
@@ -325,10 +332,10 @@ industry.add_magic_spritelayout(
         "jetty_top_sprites": [spriteset_concrete],
         "building_sprites": {
             "se": [
-                spriteset_warehouse_half_ne_sw,
+                spriteset_warehouse_half_sw_ne,
             ],
             "sw": [
-                spriteset_warehouse_half_nw_se,
+                spriteset_warehouse_half_se_nw,
             ],
             "nw": [
                 spriteset_warehouse_half_ne_sw,
@@ -373,16 +380,16 @@ industry.add_magic_spritelayout(
         "jetty_top_sprites": [],
         "building_sprites": {
             "se": [
-                spriteset_boat_4, # wrong? or needs offsets adjusted?
+                spriteset_boat_4,  # wrong? or needs offsets adjusted?
             ],
             "sw": [
-                spriteset_boat_2, # wrong? or needs offsets adjusted?
+                spriteset_boat_2,  # wrong? or needs offsets adjusted?
             ],
             "nw": [
-                spriteset_boat_2, # wrong? or needs offsets adjusted?
+                spriteset_boat_2,  # wrong? or needs offsets adjusted?
             ],
             "ne": [
-                spriteset_boat_1, # wrong? or needs offsets adjusted?
+                spriteset_boat_1,  # wrong? or needs offsets adjusted?
             ],
         },
     },
@@ -397,16 +404,16 @@ industry.add_magic_spritelayout(
         "jetty_top_sprites": [],
         "building_sprites": {
             "se": [
-                spriteset_boat_5, # wrong? or needs offsets adjusted?
+                spriteset_boat_5,  # wrong? or needs offsets adjusted?
             ],
             "sw": [
-                spriteset_boat_6, # wrong? or needs offsets adjusted?
+                spriteset_boat_6,  # wrong? or needs offsets adjusted?
             ],
             "nw": [
-                spriteset_boat_7, # wrong? or needs offsets adjusted?
+                spriteset_boat_7,  # wrong? or needs offsets adjusted?
             ],
             "ne": [
-                spriteset_boat_8, # wrong? or needs offsets adjusted?
+                spriteset_boat_8,  # wrong? or needs offsets adjusted?
             ],
         },
     },
