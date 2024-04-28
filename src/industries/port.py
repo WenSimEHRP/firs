@@ -17,7 +17,7 @@ industry = IndustryPrimaryPort(
     fund_cost_multiplier="152",
     override_default_construction_states=True,
     primary_production_random_factor_set="wide_range",
-    sprites_complete=True,
+    sprites_complete=False,
 )
 
 industry.enable_in_economy(
@@ -215,17 +215,30 @@ spriteset_crawler_crane_nw_se = industry.add_spriteset(
     sprites=[(510, 110, 64, 84, -31, -43)],
     zoffset=18,
 )
-spriteset_ship_ne_sw = industry.add_spriteset(
-    sprites=[(10, 110, 64, 39, -15, -11)],
+# there are 2 variations of the ship, (reversed, unreversed) with coast appropriate offsets for each
+spriteset_ship_1_ne_sw = industry.add_spriteset(
+    sprites=[(10, 110, 64, 39, -40, -18)],
 )
-spriteset_ship_nw_se = industry.add_spriteset(
-    sprites=[(80, 110, 64, 39, -20, -15)],
+spriteset_ship_1_nw_se = industry.add_spriteset(
+    sprites=[(80, 110, 64, 39, -22, -18)],
 )
-spriteset_ship_sw_ne = industry.add_spriteset(
-    sprites=[(150, 110, 64, 39, -15, -11)],
+spriteset_ship_1_sw_ne = industry.add_spriteset(
+    sprites=[(150, 110, 64, 39, -30, -22)],
 )
-spriteset_ship_se_nw = industry.add_spriteset(
-    sprites=[(220, 110, 64, 39, -25, -20)],
+spriteset_ship_1_se_nw = industry.add_spriteset(
+    sprites=[(220, 110, 64, 39, -27, -20)],
+)
+spriteset_ship_2_ne_sw = industry.add_spriteset(
+    sprites=[(150, 110, 64, 39, -40, -18)],
+)
+spriteset_ship_2_nw_se = industry.add_spriteset(
+    sprites=[(220, 110, 64, 39, -22, -18)],
+)
+spriteset_ship_2_sw_ne = industry.add_spriteset(
+    sprites=[(10, 110, 64, 39, -30, -22)],
+)
+spriteset_ship_2_se_nw = industry.add_spriteset(
+    sprites=[(80, 110, 64, 39, -27, -20)],
 )
 industry.add_spritelayout(
     id="port_spritelayout_water_empty",
@@ -489,7 +502,7 @@ industry.add_magic_spritelayout(
 )
 industry.add_magic_spritelayout(
     type="jetty_auto_orient_to_coast_direction",
-    base_id="port_spritelayout_water_ship_auto_orient",
+    base_id="port_spritelayout_water_ship_1_auto_orient",
     tile="port_tile_1",
     config={
         "ground_sprite": sprite_ground,
@@ -497,16 +510,40 @@ industry.add_magic_spritelayout(
         "jetty_top_sprites": [],
         "building_sprites": {
             "se": [
-                spriteset_ship_nw_se,  # wrong? or needs offsets adjusted?
+                spriteset_ship_1_nw_se,
             ],
             "sw": [
-                spriteset_ship_ne_sw,  # wrong? or needs offsets adjusted?
+                spriteset_ship_1_ne_sw,
             ],
             "nw": [
-                spriteset_ship_se_nw,  # wrong? or needs offsets adjusted?
+                spriteset_ship_1_se_nw,
             ],
             "ne": [
-                spriteset_ship_sw_ne,  # wrong? or needs offsets adjusted?
+                spriteset_ship_1_sw_ne,
+            ],
+        },
+    },
+)
+industry.add_magic_spritelayout(
+    type="jetty_auto_orient_to_coast_direction",
+    base_id="port_spritelayout_water_ship_2_auto_orient",
+    tile="port_tile_1",
+    config={
+        "ground_sprite": sprite_ground,
+        "foundation_sprites": [],
+        "jetty_top_sprites": [],
+        "building_sprites": {
+            "se": [
+                spriteset_ship_2_nw_se,
+            ],
+            "sw": [
+                spriteset_ship_2_ne_sw,
+            ],
+            "nw": [
+                spriteset_ship_2_se_nw,
+            ],
+            "ne": [
+                spriteset_ship_2_sw_ne,
             ],
         },
     },
@@ -526,7 +563,7 @@ industry.add_industry_jetty_layout(
         (1, 2, "port_spritelayout_warehouse_half_auto_orient"),
         (1, 3, "port_spritelayout_warehouse_full_auto_orient"),
         (1, 4, "port_spritelayout_warehouse_half_auto_orient"),
-        (1, 5, "port_spritelayout_water_ship_auto_orient"),
+        (1, 5, "port_spritelayout_water_ship_1_auto_orient"),
         (1, 6, "spritelayout_null_water"),
         (1, 7, "spritelayout_null_water"),
         # additional spacing at end of jetty (for better clearance in map edge context), only one tile needed for this
@@ -564,7 +601,7 @@ industry.add_industry_jetty_layout(
         (2, 2, "port_spritelayout_warehouse_half_auto_orient"),
         (2, 3, "port_spritelayout_warehouse_full_auto_orient"),
         (2, 4, "port_spritelayout_warehouse_half_auto_orient"),
-        (2, 5, "port_spritelayout_water_ship_auto_orient"),
+        (2, 5, "port_spritelayout_water_ship_2_auto_orient"),
         (2, 6, "spritelayout_null_water"),
         (2, 7, "spritelayout_null_water"),
         # additional spacing at end of jetty (for better clearance in map edge context), only one tile needed for this
