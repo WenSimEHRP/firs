@@ -154,60 +154,53 @@ spriteset_shed_ne_sw = industry.add_spriteset(
 )
 # horizontal tanks use the same sprite, but adjusted offsets for each coast
 spriteset_tanks_horizontal_nw_se = industry.add_spriteset(
-    sprites=[(720, 110, 64, 84, -31, -61)],
+    sprites=[(580, 110, 64, 84, -31, -61)],
 )
 spriteset_tanks_horizontal_ne_sw = industry.add_spriteset(
-    sprites=[(720, 110, 64, 84, -27, -61)],
+    sprites=[(580, 110, 64, 84, -27, -61)],
 )
 spriteset_tanks_horizontal_se_nw = industry.add_spriteset(
-    sprites=[(720, 110, 64, 84, -30, -61)],
+    sprites=[(580, 110, 64, 84, -30, -61)],
 )
 spriteset_tanks_horizontal_sw_ne = industry.add_spriteset(
-    sprites=[(720, 110, 64, 84, -28, -61)],
+    sprites=[(580, 110, 64, 84, -28, -61)],
 )
 # sphere tanks use the same sprite, but adjusted offsets for each coast
 spriteset_tanks_sphere_nw_se = industry.add_spriteset(
-    sprites=[(790, 110, 64, 84, -31, -61)],
+    sprites=[(650, 110, 64, 84, -31, -61)],
 )
 spriteset_tanks_sphere_ne_sw = industry.add_spriteset(
-    sprites=[(790, 110, 64, 84, -30, -61)],
+    sprites=[(650, 110, 64, 84, -30, -61)],
 )
 spriteset_tanks_sphere_se_nw = industry.add_spriteset(
-    sprites=[(790, 110, 64, 84, -30, -61)],
+    sprites=[(650, 110, 64, 84, -30, -61)],
 )
 spriteset_tanks_sphere_sw_ne = industry.add_spriteset(
-    sprites=[(790, 110, 64, 84, -31, -61)],
+    sprites=[(650, 110, 64, 84, -31, -61)],
 )
 # sphere tanks use the same sprite, but adjusted offsets for each coast
 spriteset_silos_nw_se = industry.add_spriteset(
-    sprites=[(720, 210, 64, 84, -31, -61)],
+    sprites=[(720, 110, 64, 84, -31, -61)],
 )
 spriteset_silos_ne_sw = industry.add_spriteset(
-    sprites=[(720, 210, 64, 84, -31, -61)],
+    sprites=[(720, 110, 64, 84, -31, -61)],
 )
 spriteset_silos_se_nw = industry.add_spriteset(
-    sprites=[(720, 210, 64, 84, -33, -60)],
+    sprites=[(720, 110, 64, 84, -33, -60)],
 )
 spriteset_silos_sw_ne = industry.add_spriteset(
-    sprites=[(720, 210, 64, 84, -33, -60)],
+    sprites=[(720, 110, 64, 84, -33, -60)],
 )
 spriteset_gatehouse = industry.add_spriteset(
-    sprites=[(790, 210, 64, 84, -31, -61)],
+    sprites=[(790, 110, 64, 84, -31, -61)],
 )
+# only 2 angles for crawler crane, to keep things visually simple
 spriteset_crawler_crane_ne_sw = industry.add_spriteset(
     sprites=[(440, 110, 64, 84, -31, -43)],
     zoffset=18,
 )
 spriteset_crawler_crane_nw_se = industry.add_spriteset(
     sprites=[(510, 110, 64, 84, -31, -43)],
-    zoffset=18,
-)
-spriteset_crawler_crane_se_nw = industry.add_spriteset(
-    sprites=[(580, 110, 64, 84, -31, -43)],
-    zoffset=18,
-)
-spriteset_crawler_crane_sw_ne = industry.add_spriteset(
-    sprites=[(650, 110, 64, 84, -31, -43)],
     zoffset=18,
 )
 spriteset_ship_ne_sw = industry.add_spriteset(
@@ -255,30 +248,6 @@ industry.add_magic_spritelayout(
 )
 industry.add_magic_spritelayout(
     type="jetty_auto_orient_to_coast_direction",
-    base_id="port_spritelayout_crane_parallel_auto_orient",
-    tile="port_tile_1",
-    config={
-        "ground_sprite": spriteset_ground_empty,  # should always be empty for this magic spritelayout
-        "foundation_sprites": [spriteset_jetty_ne_sw, spriteset_jetty_se_nw],
-        "jetty_top_sprites": [spriteset_concrete],
-        "building_sprites": {
-            "se": [
-                spriteset_crawler_crane_se_nw,
-            ],
-            "sw": [
-                spriteset_crawler_crane_ne_sw,
-            ],
-            "nw": [
-                spriteset_crawler_crane_se_nw,
-            ],
-            "ne": [
-                spriteset_crawler_crane_ne_sw,
-            ],
-        },
-    },
-)
-industry.add_magic_spritelayout(
-    type="jetty_auto_orient_to_coast_direction",
     base_id="port_spritelayout_crane_orthogonal_auto_orient",
     tile="port_tile_1",
     config={
@@ -293,10 +262,10 @@ industry.add_magic_spritelayout(
                 spriteset_crawler_crane_nw_se,
             ],
             "nw": [
-                spriteset_crawler_crane_sw_ne,
+                spriteset_crawler_crane_ne_sw,
             ],
             "ne": [
-                spriteset_crawler_crane_se_nw,
+                spriteset_crawler_crane_nw_se,
             ],
         },
     },
