@@ -454,8 +454,8 @@ industry.add_magic_spritelayout(
 )
 industry.add_magic_spritelayout(
     type="jetty_auto_orient_to_coast_direction",
-    base_id="port_spritelayout_shed_1_auto_orient",
-    tile="port_tile_1",
+    base_id="wharf_spritelayout_shed_1_auto_orient",
+    tile="wharf_tile_1",
     config={
         "ground_sprite": spriteset_ground_empty,  # should always be empty for this magic spritelayout
         "foundation_sprites": [spriteset_jetty_ne_sw, spriteset_jetty_se_nw],
@@ -530,10 +530,10 @@ industry.add_industry_jetty_layout(
         (0, 0, "wharf_spritelayout_coast_building"),
         (0, 1, "wharf_spritelayout_tanks_1_auto_orient"),
         (0, 2, "wharf_spritelayout_tanks_2_auto_orient"),
-        (0, 3, "port_spritelayout_shed_1_auto_orient"),
+        (0, 3, "wharf_spritelayout_shed_1_auto_orient"),
         (0, 4, "wharf_spritelayout_silo_1_auto_orient"),
         (0, 5, "wharf_spritelayout_silo_2_auto_orient"),
-        (0, 6, "port_spritelayout_shed_1_auto_orient"),
+        (0, 6, "wharf_spritelayout_shed_1_auto_orient"),
         (0, 7, "spritelayout_null_water"),
         # additional spacing at end of jetty (for better clearance in map edge context), only one tile needed for this
         (0, 8, "spritelayout_null_water"),
@@ -580,10 +580,10 @@ industry.add_industry_jetty_layout(
         (3, 0, "wharf_spritelayout_coast_building"),
         (3, 1, "wharf_spritelayout_silo_1_auto_orient"),
         (3, 2, "wharf_spritelayout_silo_2_auto_orient"),
-        (3, 3, "port_spritelayout_shed_1_auto_orient"),
+        (3, 3, "wharf_spritelayout_shed_1_auto_orient"),
         (3, 4, "wharf_spritelayout_tanks_1_auto_orient"),
         (3, 5, "wharf_spritelayout_tanks_2_auto_orient"),
-        (3, 6, "port_spritelayout_shed_1_auto_orient"),
+        (3, 6, "wharf_spritelayout_shed_1_auto_orient"),
         (3, 7, "spritelayout_null_water"),
         # additional spacing at end of jetty (for better clearance in map edge context), only one tile needed for this
         (3, 8, "spritelayout_null_water"),
