@@ -1902,10 +1902,10 @@ class Industry(object):
                     xy_offset,
                 ):
                     spritelayout_id = tiledef[3]
-                    # this is a fragile string detection, as we don't actually have the original magic spritelayout in context here
-                    # that could be fixed, we do somewhat book-keep magic spritelayouts, but not sufficiently to support detecting them here
-                    if spritelayout_id.find("auto_orient") != -1:
-                        spritelayout_id = spritelayout_id + "_" + coast_direction
+                    if self.magic_spritelayouts_by_id.get(spritelayout_id, None) is not None:
+                        # slight fragile class name detection - can move this to an auto_orient property on the spritelayout if we need to
+                        if self.magic_spritelayouts_by_id[spritelayout_id].__class__.__name__ == "MagicSpritelayoutJettyAutoOrientToCoastDirection":
+                            spritelayout_id = spritelayout_id + "_" + coast_direction
                     tiledef = (tiledef[0], tiledef[1], tiledef[2], spritelayout_id)
                     layout.append(tiledef)
                 result.append(
