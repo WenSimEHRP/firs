@@ -556,6 +556,7 @@ class MagicSpritelayoutJettyAutoOrientToCoastDirection(object):
 
     def __init__(self, industry, base_id, tile, config):
         self.tile = tile
+        self.auto_orient = True
         print(
             "MagicSpritelayoutJettyAutoOrientToCoastDirection should set water ground and ground overlay directly, not rely on them from config"
         )
@@ -1902,9 +1903,8 @@ class Industry(object):
                     xy_offset,
                 ):
                     spritelayout_id = tiledef[3]
-                    if self.magic_spritelayouts_by_id.get(spritelayout_id, None) is not None:
-                        # slight fragile class name detection - can move this to an auto_orient property on the spritelayout if we need to
-                        if self.magic_spritelayouts_by_id[spritelayout_id].__class__.__name__ == "MagicSpritelayoutJettyAutoOrientToCoastDirection":
+                    if spritelayout_id in self.magic_spritelayouts_by_id.keys():
+                        if getattr(self.magic_spritelayouts_by_id[spritelayout_id], "auto_orient", False):
                             spritelayout_id = spritelayout_id + "_" + coast_direction
                     tiledef = (tiledef[0], tiledef[1], tiledef[2], spritelayout_id)
                     layout.append(tiledef)
