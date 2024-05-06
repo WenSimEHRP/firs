@@ -49,7 +49,7 @@ silo = industry.add_spriteset(
     sprites=[(220, 10, 64, 64, -31, -34)],
 )
 stacks_2 = industry.add_spriteset(
-    sprites=[(150, 10, 64, 56, -31, -26)],
+    sprites=[(150, 10, 64, 56, -31, -31)],
 )
 industry.add_spritelayout(
     id="concrete_plant_spritelayout_1",
