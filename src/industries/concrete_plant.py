@@ -36,89 +36,109 @@ industry.add_tile(
 )
 
 spriteset_ground = industry.add_spriteset(
-    type="asphalt",
+    type="gravel",
 )
 spriteset_ground_overlay = industry.add_spriteset(type="empty")
-stacks_1 = industry.add_spriteset(
+shed_1 = industry.add_spriteset(
     sprites=[(10, 10, 64, 56, -31, -26)],
 )
-shed = industry.add_spriteset(
+conveyor_1 = industry.add_spriteset(
     sprites=[(80, 10, 64, 56, -31, -26)],
 )
-silo = industry.add_spriteset(
-    sprites=[(220, 10, 64, 64, -31, -34)],
-)
-stacks_2 = industry.add_spriteset(
+silo_1 = industry.add_spriteset(
     sprites=[(150, 10, 64, 56, -31, -31)],
 )
+silo_2 = industry.add_spriteset(
+    sprites=[(220, 10, 64, 64, -31, -34)],
+)
+aggregates = industry.add_spriteset(
+    sprites=[(360, 10, 64, 31, -31, 0)],
+)
+blocks_1 = industry.add_spriteset(
+    sprites=[(430, 10, 64, 56, -31, -31)],
+)
 industry.add_spritelayout(
-    id="concrete_plant_spritelayout_1",
+    id="concrete_plant_spritelayout_shed_1",
     tile="concrete_plant_tile_1",
     ground_sprite=spriteset_ground,
     ground_overlay=spriteset_ground_overlay,
-    building_sprites=[stacks_1],
+    building_sprites=[shed_1],
     fences=["nw", "ne", "se", "sw"],
 )
 industry.add_spritelayout(
-    id="concrete_plant_spritelayout_2",
+    id="concrete_plant_spritelayout_conveyor_1",
     tile="concrete_plant_tile_1",
     ground_sprite=spriteset_ground,
     ground_overlay=spriteset_ground_overlay,
-    building_sprites=[shed],
+    building_sprites=[conveyor_1],
 )
 industry.add_spritelayout(
-    id="concrete_plant_spritelayout_3",
+    id="concrete_plant_spritelayout_silo_1",
     tile="concrete_plant_tile_1",
     ground_sprite=spriteset_ground,
     ground_overlay=spriteset_ground_overlay,
-    building_sprites=[silo],
+    building_sprites=[silo_1],
 )
 industry.add_spritelayout(
-    id="concrete_plant_spritelayout_4",
+    id="concrete_plant_spritelayout_silo_2",
     tile="concrete_plant_tile_1",
     ground_sprite=spriteset_ground,
     ground_overlay=spriteset_ground_overlay,
-    building_sprites=[stacks_2],
+    building_sprites=[silo_2],
+)
+industry.add_spritelayout(
+    id="concrete_plant_spritelayout_aggregates",
+    tile="concrete_plant_tile_1",
+    ground_sprite=spriteset_ground,
+    ground_overlay=spriteset_ground_overlay,
+    building_sprites=[aggregates],
+)
+industry.add_spritelayout(
+    id="concrete_plant_spritelayout_blocks_1",
+    tile="concrete_plant_tile_1",
+    ground_sprite=spriteset_ground,
+    ground_overlay=spriteset_ground_overlay,
+    building_sprites=[blocks_1],
 )
 
 # relatively large IRL, and these are probably regional, not town-local
 industry.add_industry_layout(
     id="concrete_plant_industry_layout_1",
     layout=[
-        (0, 0, "concrete_plant_spritelayout_4"),
-        (0, 1, "concrete_plant_spritelayout_1"),
-        (0, 2, "concrete_plant_spritelayout_4"),
-        (1, 0, "concrete_plant_spritelayout_3"),
-        (1, 1, "concrete_plant_spritelayout_2"),
-        (1, 2, "concrete_plant_spritelayout_1"),
-        (2, 0, "concrete_plant_spritelayout_1"),
-        (2, 1, "concrete_plant_spritelayout_3"),
-        (2, 2, "concrete_plant_spritelayout_3"),
-        (3, 0, "concrete_plant_spritelayout_2"),
-        (3, 1, "concrete_plant_spritelayout_4"),
-        (3, 2, "concrete_plant_spritelayout_2"),
-        (4, 0, "concrete_plant_spritelayout_2"),
-        (4, 1, "concrete_plant_spritelayout_4"),
-        (4, 2, "concrete_plant_spritelayout_2"),
+        (0, 0, "concrete_plant_spritelayout_blocks_1"),
+        (0, 1, "concrete_plant_spritelayout_silo_1"),
+        (0, 2, "concrete_plant_spritelayout_conveyor_1"),
+        (1, 0, "concrete_plant_spritelayout_shed_1"),
+        (1, 1, "concrete_plant_spritelayout_blocks_1"),
+        (1, 2, "concrete_plant_spritelayout_aggregates"),
+        (2, 0, "concrete_plant_spritelayout_silo_1"),
+        (2, 1, "concrete_plant_spritelayout_blocks_1"),
+        (2, 2, "concrete_plant_spritelayout_blocks_1"),
+        (3, 0, "concrete_plant_spritelayout_conveyor_1"),
+        (3, 1, "concrete_plant_spritelayout_blocks_1"),
+        (3, 2, "concrete_plant_spritelayout_shed_1"),
+        (4, 0, "concrete_plant_spritelayout_aggregates"),
+        (4, 1, "concrete_plant_spritelayout_blocks_1"),
+        (4, 2, "concrete_plant_spritelayout_blocks_1"),
     ],
 )
 industry.add_industry_layout(
     id="concrete_plant_industry_layout_2",
     layout=[
-        (0, 0, "concrete_plant_spritelayout_1"),
-        (0, 1, "concrete_plant_spritelayout_3"),
-        (0, 2, "concrete_plant_spritelayout_1"),
-        (0, 3, "concrete_plant_spritelayout_4"),
-        (0, 4, "concrete_plant_spritelayout_4"),
-        (1, 0, "concrete_plant_spritelayout_2"),
-        (1, 1, "concrete_plant_spritelayout_4"),
-        (1, 2, "concrete_plant_spritelayout_2"),
-        (1, 3, "concrete_plant_spritelayout_3"),
-        (1, 4, "concrete_plant_spritelayout_3"),
-        (2, 0, "concrete_plant_spritelayout_2"),
-        (2, 1, "concrete_plant_spritelayout_4"),
-        (2, 2, "concrete_plant_spritelayout_2"),
-        (2, 3, "concrete_plant_spritelayout_3"),
-        (2, 4, "concrete_plant_spritelayout_3"),
+        (0, 0, "concrete_plant_spritelayout_shed_1"),
+        (0, 1, "concrete_plant_spritelayout_silo_2"),
+        (0, 2, "concrete_plant_spritelayout_shed_1"),
+        (0, 3, "concrete_plant_spritelayout_silo_1"),
+        (0, 4, "concrete_plant_spritelayout_silo_1"),
+        (1, 0, "concrete_plant_spritelayout_conveyor_1"),
+        (1, 1, "concrete_plant_spritelayout_silo_1"),
+        (1, 2, "concrete_plant_spritelayout_conveyor_1"),
+        (1, 3, "concrete_plant_spritelayout_silo_2"),
+        (1, 4, "concrete_plant_spritelayout_silo_2"),
+        (2, 0, "concrete_plant_spritelayout_conveyor_1"),
+        (2, 1, "concrete_plant_spritelayout_silo_1"),
+        (2, 2, "concrete_plant_spritelayout_conveyor_1"),
+        (2, 3, "concrete_plant_spritelayout_silo_2"),
+        (2, 4, "concrete_plant_spritelayout_silo_2"),
     ],
 )
