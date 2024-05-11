@@ -155,6 +155,7 @@ industry.add_industry_layout(
         (4, 2, "concrete_plant_spritelayout_blocks_1"),
     ],
 )
+"""
 industry.add_industry_layout(
     id="concrete_plant_industry_layout_2",
     layout=[
@@ -175,3 +176,4 @@ industry.add_industry_layout(
         (2, 4, "concrete_plant_spritelayout_silo_1"),
     ],
 )
+"""
