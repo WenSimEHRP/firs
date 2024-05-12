@@ -19,7 +19,7 @@ industry = IndustrySecondary(
     name="string(STR_IND_CONCRETE_PLANT)",
     nearby_station_name="string(STR_STATION_CONCRETE_PLANT)",
     fund_cost_multiplier="80",
-    sprites_complete=False,
+    sprites_complete=True, # done enough for v5
 )
 
 
@@ -155,25 +155,3 @@ industry.add_industry_layout(
         (4, 2, "concrete_plant_spritelayout_blocks_1"),
     ],
 )
-"""
-industry.add_industry_layout(
-    id="concrete_plant_industry_layout_2",
-    layout=[
-        (0, 0, "concrete_plant_spritelayout_shed_1"),
-        (0, 1, "concrete_plant_spritelayout_silo_1"),
-        (0, 2, "concrete_plant_spritelayout_shed_1"),
-        (0, 3, "concrete_plant_spritelayout_silo_1"),
-        (0, 4, "concrete_plant_spritelayout_silo_1"),
-        (1, 0, "concrete_plant_spritelayout_conveyor_1"),
-        (1, 1, "concrete_plant_spritelayout_silo_1"),
-        (1, 2, "concrete_plant_spritelayout_conveyor_1"),
-        (1, 3, "concrete_plant_spritelayout_silo_1"),
-        (1, 4, "concrete_plant_spritelayout_silo_1"),
-        (2, 0, "concrete_plant_spritelayout_conveyor_1"),
-        (2, 1, "concrete_plant_spritelayout_silo_1"),
-        (2, 2, "concrete_plant_spritelayout_conveyor_1"),
-        (2, 3, "concrete_plant_spritelayout_silo_1"),
-        (2, 4, "concrete_plant_spritelayout_silo_1"),
-    ],
-)
-"""
